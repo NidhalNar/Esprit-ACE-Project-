@@ -1,0 +1,48 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Post 
+{% endblock %}
+
+{% block body %}
+<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h1 class="text-center">Gestion des Post signalés</h1>
+			</div>
+			<div class="card-body">
+	
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id_post</th>
+				<th>Sujet</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for post in posts %}
+				{% if post.signaled %}
+					<tr>
+						<td>{{ post.getId_post }}</td>
+						<td>{{ post.getSujet }}</td>
+
+						<td>
+							<a href="{{ path('app_post_show', {'id_post': post.id_post}) }}" class="btn btn-primary btn rounded text-light">Afficher</a>
+							<a href="{{ path('app_post_edit', {'id_post': post.id_post}) }}" class="btn btn-success btn rounded text-light">Modifier</a>
+							<a href="{{ path('app_post_unsignal', {'id_post': post.id_post}) }}" class="btn btn-warning btn rounded text-light">Unsignalé</a>
+
+						</td>
+					</tr>
+				{% endif %}
+			{% else %}
+				<tr>
+					<td colspan="3">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{{ knp_pagination_render(posts) }}
+
+
+{% endblock %}

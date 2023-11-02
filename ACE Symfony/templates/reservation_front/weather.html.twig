@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Get Weather{% endblock %}
+
+{% block body %}
+    <h1>Get Weather</h1>
+
+    <form action="{{ path('reservation_weather_info') }}" method="post">
+        <div class="form-group">
+            <label for="api_id">OpenWeather API ID</label>
+            <input type="text" class="form-control" id="api_id" name="api_id" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Get Weather Info</button>
+    </form>
+
+    {% if app.request.method == 'POST' %}
+        {% set api_id = app.request.request.get('api_id') %}
+        {% if api_id is defined %}
+            <p>API ID: {{ api_id }}</p>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

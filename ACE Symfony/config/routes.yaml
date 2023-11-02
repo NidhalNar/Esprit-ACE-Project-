@@ -1,0 +1,21 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+app_destination_export_excel:
+    path: /destination/export/excel
+    controller: App\Controller\DestinationController::exportToExcel
+
+# config/routes.yaml
+
+generate_qr_code:
+    path: destination/generate-qr-code/{id}
+    controller: App\Controller\DestinationController::generateQRCode
+
+
+app_hotel_export_excel:
+    path: /hotel/export/excel
+    controller: App\Controller\HotelController::exportHotelsToExcel
+
+generate_qr_code_hotel:
+    path: hotel/generate-qr-code/{id}
+    controller: App\Controller\HotelController::generateQRCodehotel

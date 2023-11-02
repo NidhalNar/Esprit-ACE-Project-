@@ -1,0 +1,87 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Liste des événements{% endblock %}
+{% block home %}
+		<div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img class="w-100" src="{{ asset('front-office/img/gestion.jpg') }}" alt="Image">
+						<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+							<div class="p-3" style="max-width: 900px;">
+								<br><br><br>
+								<h5 class="text-white text-uppercase mb-3 animated slideInDown">Ace</h5>
+								<h1 class="display-1 text-white mb-md-4 animated zoomIn">Art, Culture & Entertainment</h1>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+{% endblock %}
+{% block body %}
+<div class="container mt-4">
+<div class="card">
+<div class="card-header">
+<h1 class="h3">{{ block('title') }}</h1>
+
+
+<a href="{{ path('app_evenement_index', {sort: sort == 'asc' ? 'desc' : 'asc'}) }}" class="btn btn-sm btn-secondary">
+    <i class="bi bi-sort-alpha-{{ sort == 'asc' ? 'down' : 'up' }}"></i> Trier par nom
+
+</a>
+<div id="google_translate_element"></div>
+         <script type="text/javascript">
+             function googleTranslateElementInit() {
+                 new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+             }
+         </script>
+
+         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        
+         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</div>
+<div class="card-body">
+<table class="table">
+<thead>
+<tr>
+<th>ID</th>
+<th>Durée</th>
+<th>Prix</th>
+<th>Date de début</th>
+<th>Date de fin</th>
+<th>Nom de l'événement</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody>
+{% for evenement in evenements %}
+<tr>
+<td>{{ evenement.getId }}</td>
+<td>{{ evenement.getDuree }}</td>
+<td>{{ evenement.getPrix }} DT</td>
+<td>{{ evenement.getDateDeb ? evenement.dateDeb|date('d/m/Y') : '' }}</td>
+<td>{{ evenement.getDateFin ? evenement.dateFin|date('d/m/Y') : '' }}</td>
+<td>{{ evenement.getNomEvent }}</td>
+
+<td>
+<a href="{{ path('app_evenement_show2', {'id_event': evenement.getId}) }}" class="btn btn-sm btn-primary">Afficher</a>
+
+
+</td>
+</tr>
+{% else %}
+<tr>
+<td colspan="6">Aucun enregistrement trouvé</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+<div class="card-footer">
+</div>
+
+</div>
+</div>
+{% endblock %}

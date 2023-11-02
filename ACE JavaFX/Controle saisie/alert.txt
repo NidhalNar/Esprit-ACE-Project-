@@ -1,0 +1,28 @@
+$this->addFlash("success", "This is a success message");
+
+        // Adding a warning type message
+        $this->addFlash("warning", "This is a warning message");
+
+        // Adding an error type message
+        $this->addFlash("error", "This is an error message");
+
+        // Adding a custom type message, remember the type is totally up to you !
+        $this->addFlash("bat-alarm", "Gotham needs Batman");
+
+
+ if ($form->isSubmitted() && $form->isValid()) {
+        try {
+            $destinationRepository->save($destination, true);
+            $this->addFlash('success', 'New destination added successfully!');
+            return $this->redirectToRoute('app_destination_index', [], Response::HTTP_SEE_OTHER);
+        } catch (\Exception $e) {
+            $this->addFlash('error', 'Error adding new destination. Please try again.');
+        }
+    }
+
+<!-- Add this code to your Twig template -->
+{% if app.flashes.error %}
+    <div class="alert alert-danger">
+        {{ app.flashes.error[0] }}
+    </div>
+{% endif %} nzidouh fl twig win bch tetla3 l affichage

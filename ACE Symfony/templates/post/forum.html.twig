@@ -1,0 +1,57 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Post 
+{% endblock %}
+{% block home %}
+		<div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img class="w-100" src="{{ asset('front-office/img/gestion.jpg') }}" alt="Image">
+						<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+							<div class="p-3" style="max-width: 900px;">
+								<br><br><br>
+								<h5 class="text-white text-uppercase mb-3 animated slideInDown">Ace</h5>
+								<h1 class="display-1 text-white mb-md-4 animated zoomIn">Art, Culture & Entertainment</h1>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+{% endblock %}
+{% block body %}
+	<h1>Gestion des Post</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id_post</th>
+				<th>Sujet</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for post in posts %}
+				<tr>
+					<td>{{ post.getId_post }}</td>
+					<td>{{ post.getSujet }}</td>
+					
+					<td>
+                   	 <a href="{{ path('app_post_show', {'id_post': post.id_post}) }}" class="btn btn-primary btn rounded text-light">Afficher</a>
+                  	 <a href="{{ path('app_post_edit', {'id_post': post.id_post}) }}"class="btn btn-success btn rounded text-light">Modifier</a>
+                  	 <a href="{{ path('app_post_edit', {'id_post': post.id_post}) }}"class="btn btn-success btn rounded text-light">Commenter</a>
+
+               	</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="3">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_post_new') }}">Ajouter</a>
+{% endblock %}

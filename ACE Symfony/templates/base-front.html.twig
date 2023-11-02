@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Ace
+			{% block title %}
+				Home
+			{% endblock  %}
+		</title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta content="Free HTML Templates" name="keywords">
+		<meta
+		content="Free HTML Templates" name="description">
+
+		<!-- Favicon -->
+		<link
+		href="{{ asset('img/favicon.ico') }}" rel="icon">
+
+
+		<!-- Google Web Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+		href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+		<!-- Icon Font Stylesheet -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+		{% block lib %}
+			<!-- Libraries Stylesheet -->
+			<link
+			href="{{ asset('front-office/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+			<!-- Animate.css Stylesheet -->
+			<link href="{{ asset('front-office/lib/animate/animate.min.css') }}" rel="stylesheet">
+		{% endblock %}
+		<!-- Customized Bootstrap Stylesheet -->
+		{% block css %}
+			<link
+			href="{{ asset('front-office/css/bootstrap.min.css') }}" rel="stylesheet">
+
+			<!-- Template Stylesheet -->
+			<link href="{{ asset('front-office/css/style.css') }}" rel="stylesheet">
+		{% endblock %}
+	</head>
+
+	<body>
+		<!-- Spinner Start -->
+		<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+			<div class="spinner"></div>
+		</div>
+		<!-- Spinner End -->
+
+
+		<!-- Topbar Start -->
+		<div class="container-fluid bg-dark px-5 d-none d-lg-block">
+			<div class="row gx-0">
+				<div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+					<div class="d-inline-flex align-items-center" style="height: 45px;">
+						<small class="me-3 text-light">
+							<i class="fa fa-map-marker-alt me-2"></i>TUNISIE</small>
+						<small class="me-3 text-light">
+							<i class="fa fa-phone-alt me-2"></i>+216 72 474 110</small>
+						<small class="text-light">
+							<i class="fa fa-envelope-open me-2"></i>ace@gmail.com</small>
+					</div>
+				</div>
+				<div class="col-lg-4 text-center text-lg-end">
+					<div class="d-inline-flex align-items-center" style="height: 45px;">
+						<a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="">
+							<i class="fab fa-twitter fw-normal"></i>
+						</a>
+						<a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="">
+							<i class="fab fa-facebook-f fw-normal"></i>
+						</a>
+						<a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="">
+							<i class="fab fa-linkedin-in fw-normal"></i>
+						</a>
+						<a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="">
+							<i class="fab fa-instagram fw-normal"></i>
+						</a>
+						<a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href="">
+							<i class="fab fa-youtube fw-normal"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Topbar End -->
+
+
+		<!-- Navbar & Carousel Start -->
+		<div class="container-fluid position-relative p-0">
+			<nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+				<a href="index.html" class="navbar-brand p-0">
+					<h1 class="m-0">
+						<img src="{{ asset('front-office/img/logo.png') }}" width="10%">ACE</h1>
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+					<span class="fa fa-bars"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<div class="navbar-nav ms-auto py-0">
+					<a href="{{ path('app_home')}}" class="nav-item nav-link {{ app.request.attributes.get('_route') == 'app_home' ? 'active' : '' }}">Home</a>
+						<a href="{{ path('app_hotel_index2') }}" class="nav-item nav-link {{ app.request.attributes.get('_route') == 'app_hotel_index2' ? 'active' : '' }}">Hotel</a>
+						<a href="{{ path('app_evenement_index2') }}" class="nav-item nav-link {{ app.request.attributes.get('_route') == 'app_evenement_index2' ? 'active' : '' }}">Evénements</a>
+						<a href="{{ path('app_post_index') }}" class="nav-item nav-link {{ app.request.attributes.get('_route') == 'app_post_index' ? 'active' : '' }}">Forum</a>
+						<a href="{{ path('app_reservation_index1') }}" class="nav-item nav-link {{ app.request.attributes.get('_route') == 'app_reservation_index' ? 'active' : '' }}">Réservations</a>
+						<a href="{{ path('app_sponsor_index1') }}" class="nav-item nav-link {{ app.request.attributes.get('_route') == 'app_sponsor_index1' ? 'active' : '' }}">Sponsor</a>
+						<li class="nav-item dropdown pe-3">
+
+							<a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+								<span class="d-none d-md-block dropdown-toggle ps-2">Compte</span>
+							</a>
+							<!-- End Profile Iamge Icon -->
+
+							<ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+								<li class="dropdown-header">
+									<h6>{{ app.user.nom }}
+									</h6>
+
+								</li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+
+								<li>
+									<a class="dropdown-item d-flex align-items-center" href="{{ path('app_user_front', {'id': app.user.id}) }}">
+										<i class="bi bi-person"></i>
+										<span>Mon profil</span>
+									</a>
+								</li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+
+								<li>
+									<a class="dropdown-item d-flex align-items-center" href="{{ path('app_userf_front', {'id': app.user.id}) }}">
+										<i class="bi bi-gear"></i>
+										<span>
+											Modifier mon profil</span>
+									</a>
+								</li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li>
+									<a class="dropdown-item d-flex align-items-center" href="{{ path('app_user_editpasswordFront', {'id': app.user.id}) }}">
+										<i class="bi bi-gear"></i>
+										<span>
+											Modifier Mot de passe</span>
+									</a>
+								</li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+
+
+								<li>
+									<a class="dropdown-item d-flex align-items-center" href="{{ path('app_logout') }}">
+										<i class="bi bi-box-arrow-right"></i>
+										<span>Se déconnecter
+										</span>
+									</a>
+								</li>
+
+							</ul>
+							<!-- End Profile Dropdown Items -->
+						</li>
+					</div>
+				</div>
+			</nav>
+			{% block home %}
+				<div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<img class="w-100" src="{{ asset('front-office/img/home.jpg') }}" alt="Image">
+							<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+								<div class="p-3" style="max-width: 900px;">
+									<br><br><br>
+									<h5 class="text-white text-uppercase mb-3 animated slideInDown">Ace</h5>
+									<h1 class="display-1 text-white mb-md-4 animated zoomIn">Art, Culture & Entertainment</h1>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<!-- Navbar & Carousel End -->
+			{% endblock %}
+
+			{% block body %}
+				<!-- About Start -->
+				<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+					<div class="container py-5">
+						<div class="row g-5">
+							<div class="col-lg-7">
+								<div class="section-title position-relative pb-3 mb-5">
+									<h5 class="fw-bold text-primary text-uppercase">About Us</h5>
+									<h1 class="mb-0">The Best IT Solution With 10 Years of Experience</h1>
+								</div>
+								<p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna dolore erat amet</p>
+								<div class="row g-0 mb-3">
+									<div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
+										<h5 class="mb-3">
+											<i class="fa fa-check text-primary me-3"></i>Award Winning</h5>
+										<h5 class="mb-3">
+											<i class="fa fa-check text-primary me-3"></i>Professional Staff</h5>
+									</div>
+									<div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
+										<h5 class="mb-3">
+											<i class="fa fa-check text-primary me-3"></i>24/7 Support</h5>
+										<h5 class="mb-3">
+											<i class="fa fa-check text-primary me-3"></i>Fair Prices</h5>
+									</div>
+								</div>
+								<div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
+									<div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+										<i class="fa fa-phone-alt text-white"></i>
+									</div>
+									<div class="ps-4">
+										<h5 class="mb-2">Call to ask any question</h5>
+										<h4 class="text-primary mb-0">+012 345 6789</h4>
+									</div>
+								</div>
+								<a href="quote.html" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Request A Quote</a>
+							</div>
+							<div class="col-lg-5" style="min-height: 500px;">
+								<div class="position-relative h-100">
+									<img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="img/about.jpg" style="object-fit: cover;">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- About End -->
+
+
+				<!-- Features Start -->
+				<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+					<div class="container py-5">
+						<div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+							<h5 class="fw-bold text-primary text-uppercase">Why Choose Us</h5>
+							<h1 class="mb-0">We Are Here to Grow Your Business Exponentially</h1>
+						</div>
+						<div class="row g-5">
+							<div class="col-lg-4">
+								<div class="row g-5">
+									<div class="col-12 wow zoomIn" data-wow-delay="0.2s">
+										<div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+											<i class="fa fa-cubes text-white"></i>
+										</div>
+										<h4>Best In Industry</h4>
+										<p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+									</div>
+									<div class="col-12 wow zoomIn" data-wow-delay="0.6s">
+										<div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+											<i class="fa fa-award text-white"></i>
+										</div>
+										<h4>Award Winning</h4>
+										<p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
+								<div class="position-relative h-100">
+									<img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.1s" src="img/feature.jpg" style="object-fit: cover;">
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="row g-5">
+									<div class="col-12 wow zoomIn" data-wow-delay="0.4s">
+										<div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+											<i class="fa fa-users-cog text-white"></i>
+										</div>
+										<h4>Professional Staff</h4>
+										<p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+									</div>
+									<div class="col-12 wow zoomIn" data-wow-delay="0.8s">
+										<div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+											<i class="fa fa-phone-alt text-white"></i>
+										</div>
+										<h4>24/7 Support</h4>
+										<p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Features Start -->
+
+
+				<!-- Service Start -->
+				<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+					<div class="container py-5">
+						<div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+							<h5 class="fw-bold text-primary text-uppercase">Our Services</h5>
+							<h1 class="mb-0">Custom IT Solutions for Your Successful Business</h1>
+						</div>
+						<div class="row g-5">
+							<div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+								<div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+									<div class="service-icon">
+										<i class="fa fa-shield-alt text-white"></i>
+									</div>
+									<h4 class="mb-3">Cyber Security</h4>
+									<p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
+									<a class="btn btn-lg btn-primary rounded" href="">
+										<i class="bi bi-arrow-right"></i>
+									</a>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
+								<div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+									<div class="service-icon">
+										<i class="fa fa-chart-pie text-white"></i>
+									</div>
+									<h4 class="mb-3">Data Analytics</h4>
+									<p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
+									<a class="btn btn-lg btn-primary rounded" href="">
+										<i class="bi bi-arrow-right"></i>
+									</a>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
+								<div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+									<div class="service-icon">
+										<i class="fa fa-code text-white"></i>
+									</div>
+									<h4 class="mb-3">Web Development</h4>
+									<p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
+									<a class="btn btn-lg btn-primary rounded" href="">
+										<i class="bi bi-arrow-right"></i>
+									</a>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
+								<div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+									<div class="service-icon">
+										<i class="fab fa-android text-white"></i>
+									</div>
+									<h4 class="mb-3">Apps Development</h4>
+									<p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
+									<a class="btn btn-lg btn-primary rounded" href="">
+										<i class="bi bi-arrow-right"></i>
+									</a>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
+								<div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+									<div class="service-icon">
+										<i class="fa fa-search text-white"></i>
+									</div>
+									<h4 class="mb-3">SEO Optimization</h4>
+									<p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
+									<a class="btn btn-lg btn-primary rounded" href="">
+										<i class="bi bi-arrow-right"></i>
+									</a>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
+								<div class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
+									<h3 class="text-white mb-3">Call Us For Quote</h3>
+									<p class="text-white mb-3">Clita ipsum magna kasd rebum at ipsum amet dolor justo dolor est magna stet eirmod</p>
+									<h2 class="text-white mb-0">+012 345 6789</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Service End -->
+			{% endblock %}
+			<!-- Vendor End -->
+
+
+			<!-- Footer Start -->
+			<div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
+				<div class="container">
+					<div class="row gx-5">
+						<div class="col-lg-4 col-md-6 footer-about">
+							<div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
+								<a href="index.html" class="navbar-brand">
+									<h1 class="m-0 text-white">
+										<i class="fa fa-user-tie me-2"></i>ACE</h1>
+								</a>
+								<p class="mt-3 mb-4">Ace est le guide de sorties en Tunisie qui réunit dans une seule application les meilleurs endroits à visiter en Tunisie, les événements culturels, les soirées, les sorties cinéma, les excursions et randonnées, les voyages ou encore les bons plans culinaires.</p>
+							</div>
+						</div>
+						<div class="col-lg-8 col-md-6">
+							<div class="row gx-5">
+								<div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+									<div class="section-title section-title-sm position-relative pb-3 mb-4">
+										<h3 class="text-light mb-0">Contactez-nous</h3>
+									</div>
+									<div class="d-flex mb-2">
+										<i class="bi bi-geo-alt text-primary me-2"></i>
+										<p class="mb-0">TUNISIE</p>
+									</div>
+									<div class="d-flex mb-2">
+										<i class="bi bi-envelope-open text-primary me-2"></i>
+										<p class="mb-0">ace@gmail.com</p>
+									</div>
+									<div class="d-flex mb-2">
+										<i class="bi bi-telephone text-primary me-2"></i>
+										<p class="mb-0">+216 72 474 110</p>
+									</div>
+									<div class="d-flex mt-4">
+										<a class="btn btn-primary btn-square me-2" href="#">
+											<i class="fab fa-twitter fw-normal"></i>
+										</a>
+										<a class="btn btn-primary btn-square me-2" href="#">
+											<i class="fab fa-facebook-f fw-normal"></i>
+										</a>
+										<a class="btn btn-primary btn-square me-2" href="#">
+											<i class="fab fa-linkedin-in fw-normal"></i>
+										</a>
+										<a class="btn btn-primary btn-square" href="#">
+											<i class="fab fa-instagram fw-normal"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid text-white" style="background: #061429;">
+				<div class="container text-center">
+					<div class="row justify-content-end">
+						<div class="col-lg-8 col-md-6">
+							<div class="d-flex align-items-center justify-content-center" style="height: 75px;">
+								<p class="mb-0">&copy;
+									<a class="text-white border-bottom" href="#">ACE
+									</a>. All Rights Reserved 2023.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Footer End -->
+
+
+			
+
+			<!-- JavaScript Libraries -->
+			{% block js %}
+
+				<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+				<script src="{{ asset('front-office/lib/wow/wow.min.js') }}"></script>
+				<script src="{{ asset('front-office/lib/easing/easing.min.js') }}"></script>
+				<script src="{{ asset('front-office/lib/waypoints/waypoints.min.js') }}"></script>
+				<script src="{{ asset('front-office/lib/counterup/counterup.min.js') }}"></script>
+				<script src="{{ asset('front-office/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+
+				<!-- Template Javascript -->
+				<script src="{{ asset('front-office/js/main.js') }}"></script>
+			{% endblock %}
+		</body>
+	</body>
+</html>

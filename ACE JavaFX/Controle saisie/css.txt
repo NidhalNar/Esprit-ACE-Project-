@@ -1,0 +1,7 @@
+/* form.css */
+.has-error .form-error-message {
+    color: red;
+}
+
+
+<link rel="stylesheet" href="{{ asset('back-office/css/form.css') }}" />

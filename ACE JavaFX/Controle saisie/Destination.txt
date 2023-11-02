@@ -1,0 +1,21 @@
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+#[ORM\Entity(repositoryClass: DestinationRepository::class)]
+#[UniqueEntity(fields: ['pays', 'ville'], message: 'The combination of "pays" and "ville" already exists.')]
+class Destination
+{
+    #[ORM\Column(length: 25)]
+    #[Assert\NotBlank(
+        message: "Please enter the country."
+    )]
+    private ?string $pays = null;
+
+    #[ORM\Column(length: 25)]
+    #[Assert\NotBlank(
+        message: "Please enter the city."
+    )]
+    private ?string $ville = null;
+
+    // ...
+}

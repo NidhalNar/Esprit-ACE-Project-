@@ -1,0 +1,81 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}CategoriesSponsor
+{% endblock %}
+
+{% block body %}
+
+	<section class="section">
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Categories Sponsor</h5>
+						{% set cat_food = 0 %}
+						{% set cat_clothes = 0 %}
+						{% for cate in categories_sponsors %}
+							{% if cate.getCategories == "food" %}
+								{% set cat_food = cat_food + 1 %}
+							{% elseif cate.getCategories == "clothes" %}
+								{% set cat_clothes = cat_clothes + 1 %}
+							{% endif %}
+						{% endfor %}
+						<div class="row">
+							<div class="col-md-4">
+								<div class="card bg-primary text-dark bg-opacity-25">
+									<div class="card-body">
+										<h5 class="card-title card-title-dash" style="color: #343A40; font-weight: bold;">Voici le nombre de sponsors qui ont été associés à la catégorie food
+										</h5>
+										<p class="card-text" style="font-size: 36px; font-weight: bold; color: #007BFF;">{{ cat_food }}</p>
+
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-4">
+								<div class="card bg-primary text-dark bg-opacity-25">
+									<div class="card-body">
+										<h5 class="card-title card-title-dash" style="color: #343A40; font-weight: bold;">Voici le nombre de sponsors qui ont été associés à la catégorie clothes</h5>
+										<p class="card-text" style="font-size: 36px; font-weight: bold; color: #007BFF;">{{ cat_clothes }}</p>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Id_cat</th>
+									<th>Categories</th>
+									<th>actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for categories_sponsor in categories_sponsors %}
+									<tr>
+										<td>{{ categories_sponsor.getId_cat }}</td>
+										<td>{{ categories_sponsor.getCategories }}</td>
+
+										<td>
+											<a href="{{ path('app_categories_sponsor_show', {'id_cat': categories_sponsor.id_cat}) }}" class="btn btn-primary btn rounded text-light">Afficher</a>
+											<a href="{{ path('app_categories_sponsor_edit', {'id_cat': categories_sponsor.id_cat}) }}" class="btn btn-success btn rounded text-light">Modifier</a>
+										</td>
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="3">no records found</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+
+						<a href="{{ path('app_categories_sponsor_new') }}">Créer une catégorie</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

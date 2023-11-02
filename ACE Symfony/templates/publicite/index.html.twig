@@ -1,0 +1,46 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Publicite{% endblock %}
+
+{% block body %}
+  
+                <section class="section">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Liste des publicités</h5>
+					<table
+						class="table">
+                    <thead>
+                        <tr>
+                            <th>Id_pub</th>
+                            <th>Type</th>
+                            <th>Nom Event</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for publicite in publicites %}
+                        <tr>
+                            <td>{{ publicite.getId }}</td>
+                            <td>{{ publicite.getType }}</td>
+                            <td>{{ publicite.getEvenements is not null ? publicite.getEvenements.getNomEvent : 'N/A' }}</td>
+                            <td>
+                                <a href="{{ path('app_publicite_show', {'id_pub': publicite.getId}) }}" class="btn btn-primary">Voir</a>
+                                <a href="{{ path('app_publicite_edit', {'id_pub': publicite.getId}) }}" class="btn btn-success">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Aucun enregistrement trouvé.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <a href="{{ path('app_publicite_new') }}" class="btn btn-primary">Créer une nouvelle publicité</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

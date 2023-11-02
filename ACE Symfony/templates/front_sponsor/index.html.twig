@@ -1,0 +1,74 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Sponsor {% endblock %}
+{% block home %}
+		<div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img class="w-100" src="{{ asset('front-office/img/gestion.jpg') }}" alt="Image">
+						<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+							<div class="p-3" style="max-width: 900px;">
+								<br><br><br>
+								<h5 class="text-white text-uppercase mb-3 animated slideInDown">Ace</h5>
+								<h1 class="display-1 text-white mb-md-4 animated zoomIn">Art, Culture & Entertainment</h1>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+{% endblock %}
+{% block body %}
+    <h1>Sponsors</h1>
+
+   
+ <input type="text" id="search" class="form-control" placeholder="Search">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id_sponsor</th>
+                <th>Intitule</th>
+                <th>Duree_contrat</th> 
+                <th>Date_debc</th>
+                <th>Date_finc</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for sponsor in sponsors %}
+                <tr>
+                    <td>{{ sponsor.getId_sponsor }}</td>
+                    <td>{{ sponsor.getIntitule }}</td>
+                    <td>{{ sponsor.getDureeContrat }}</td>
+                    <td>{{ sponsor.getDateDebc ? sponsor.dateDebc|date('Y-m-d') : '' }}</td>
+                    <td>{{ sponsor.getDateFinc ? sponsor.dateFinc|date('Y-m-d') : '' }}</td>
+                   
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="align-center"> {{ knp_pagination_render(pagination) }}</div>
+    
+   <a href="{{ path('app_pdf') }}" class="btn btn-primary btn rounded text-light">pdf</a>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("table tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
+{% endblock %}

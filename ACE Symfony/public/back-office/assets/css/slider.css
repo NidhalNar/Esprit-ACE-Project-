@@ -1,0 +1,21 @@
+.slider-hover {
+  position: relative;
+}
+
+.slider-hover::before {
+  content: attr(data-value) " stars"; /* Display the hover text */
+  position: absolute;
+  top: -30px; /* Adjust the positioning based on your design */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.slider-hover:hover::before {
+  opacity: 1; /* Show the hover text on hover */
+}

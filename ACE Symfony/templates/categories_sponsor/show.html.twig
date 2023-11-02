@@ -1,0 +1,37 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}CategoriesSponsor{% endblock %}
+
+{% block body %}
+<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h1 class="text-center">CategoriesSponsor</h1>
+			</div>
+			<div class="card-body">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id_cat</th>
+                <td>{{ categories_sponsor.getId_cat }}</td>
+            </tr>
+            <tr>
+                <th>Categories</th>
+                <td>{{ categories_sponsor.getCategories }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+   
+
+ 
+
+    	 <a href="{{ path('app_categories_sponsor_edit', {'id_cat': categories_sponsor.id_cat}) }}" class="btn btn-outline-success rounded">Modifier</a>
+
+   		 <a href="{{ path('app_categories_sponsor_index') }}" class="btn btn-outline-secondary rounded">Retour à la liste</a>
+<br><br>
+    {{ include('categories_sponsor/_delete_form.html.twig') }}
+    	</div>
+		</div>
+	</div>
+{% endblock %}

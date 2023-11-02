@@ -1,0 +1,12 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %} CategoriesSponsor{% endblock %}
+
+{% block body %}
+    <h1>Ajouter CategoriesSponsor</h1>
+
+    {{ include('categories_sponsor/_form.html.twig') }}
+
+   
+     <a href="{{ path('app_categories_sponsor_index') }}"class="btn btn-outline-secondary rounded" >retour a la liste</a>
+{% endblock %}

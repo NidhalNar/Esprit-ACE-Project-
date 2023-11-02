@@ -1,0 +1,13 @@
+{% extends 'base-back.html.twig' %}
+{% block title %}New Destination{% endblock %}
+
+{% block body %}
+    <h1>Create new Destination</h1>
+        <a href="{{ path('app_destination_index') }}"class="btn btn-outline-secondary rounded" style=" position: absolute; top: 10px; right: 10px; margin-right: 10px; margin-top: 10px;">back to list</a>
+
+
+    
+
+    {{ include('destination/_form.html.twig') }}<br>
+
+{% endblock %}

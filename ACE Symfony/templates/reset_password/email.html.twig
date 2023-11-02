@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>Réinitialisation du mot de passe</title>
+	</head>
+	<body>
+		<p>Pour réinitialiser votre mot de passe, veuillez visiter le lien suivant</p>
+		<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+		<p>Veuillez noter que ce lien expirera dans
+			{{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+		<p>Si vous n'avez pas demandé de réinitialisation de mot de passe, veuillez ne pas tenir compte de ce message.</p>
+		<p>L'équipe de [ACE]</p>
+	</body>
+</html>

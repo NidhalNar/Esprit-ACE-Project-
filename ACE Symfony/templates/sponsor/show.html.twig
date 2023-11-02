@@ -1,0 +1,47 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Sponsor
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h1 class="text-center">Sponsor</h1>
+			</div>
+			<div class="card-body">
+				<table class="table">
+					<tbody>
+						<tr>
+							<th>Id_sponsor</th>
+							<td>{{ sponsor.getId_sponsor }}</td>
+						</tr>
+						<tr>
+							<th>Intitule</th>
+							<td>{{ sponsor.intitule }}</td>
+						</tr>
+						<tr>
+							<th>Duree_contrat</th>
+							<td>{{ sponsor.dureeContrat }}</td>
+						</tr>
+						<tr>
+							<th>Date_debc</th>
+							<td>{{ sponsor.dateDebc ? sponsor.dateDebc|date('Y-m-d') : '' }}</td>
+						</tr>
+						<tr>
+							<th>Date_finc</th>
+							<td>{{ sponsor.dateFinc ? sponsor.dateFinc|date('Y-m-d') : '' }}</td>
+						</tr>
+					</tbody>
+				</table>
+
+
+				<a href="{{ path('app_sponsor_edit', {'id_sponsor': sponsor.id_sponsor}) }}" class="btn btn-outline-success rounded">Modifier</a>
+
+				<a href="{{ path('app_sponsor_index') }}" class="btn btn-outline-secondary rounded">retour à la page</a>
+
+				{{ include('sponsor/_delete_form.html.twig') }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Hotel {% endblock %}
+
+{% block body %}
+ <section class="section">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Hotels</h5>
+					<table
+   
+        <a href="{{ path('app_hotel_export_excel') }}" class="btn btn-secondary btn-rounded text-light" style=" position: absolute; top: 10px; right: 10px; margin-right: 10px; margin-top: 10px;">Export to Excel</a>
+
+
+ {% set hotels_0_1_star_count = 0 %}
+{% set hotels_2_3_star_count = 0 %}
+{% set hotels_4_5_star_count = 0 %}
+
+{% for hotel in hotels %}
+    {% if hotel.etoile == 0 or hotel.etoile == 1 %}
+        {% set hotels_0_1_star_count = hotels_0_1_star_count + 1 %}
+    {% elseif hotel.etoile == 2 or hotel.etoile == 3 %}
+        {% set hotels_2_3_star_count = hotels_2_3_star_count + 1 %}
+    {% elseif hotel.etoile == 4 or hotel.etoile == 5 %}
+        {% set hotels_4_5_star_count = hotels_4_5_star_count + 1 %}
+    {% endif %}
+{% endfor %}
+
+    <div class="row">
+    <div class="col-md-4">
+        <div class="card bg-primary text-dark bg-opacity-25">
+            <div class="card-body">
+                <h5 class="card-title card-title-dash" style="color: #343A40; font-weight: bold;">Hotels with 0 or 1 Stars</h5>
+                <p class="card-text" style="font-size: 36px; font-weight: bold; color: #007BFF;">{{ hotels_0_1_star_count }}</p>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-primary text-dark bg-opacity-25">
+            <div class="card-body">
+                <h5 class="card-title card-title-dash" style="color: #343A40; font-weight: bold;">Hotels with 2 or 3 Stars</h5>
+                <p class="card-text" style="font-size: 36px; font-weight: bold; color: #007BFF;">{{ hotels_2_3_star_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-primary text-dark bg-opacity-25">
+            <div class="card-body">
+                <h5 class="card-title card-title-dash" style="color: #343A40; font-weight: bold;">Hotels with 4 or 5 Stars</h5>
+                <p class="card-text" style="font-size: 36px; font-weight: bold; color: #007BFF;">{{ hotels_4_5_star_count }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <table id="example" class="table  table-hover display nowrap  border " style="width:100%">
+        <thead>
+          <tr class="table-primary" height="50px"> 
+                <th class="text-center">Id</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Stars</th>
+                <th class="text-center">Type</th>
+                <th class="text-center">Place</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+        {% for hotel in hotels %}
+            <tr>
+                <td>{{ hotel.id }}</td>
+                <td>{{ hotel.nom }}</td>
+                <td>{{ hotel.etoile }} Stars</td>
+                <td>{{ hotel.type }}</td>
+ <td>{{ hotel.place is not null ? hotel.place.pays : 'N/A' }}</td>               
+  <td>
+                    <a href="{{ path('app_hotel_show', {'id': hotel.id}) }}" class="btn btn-primary btn rounded text-light">Afficher</a>
+                    <a href="{{ path('app_hotel_edit', {'id': hotel.id}) }}" class="btn btn-success btn rounded text-light">Modifier</a>
+                     <a href="{{ path('generate_qr_code_hotel', {'id': hotel.id}) }}" class="btn btn-info btn rounded text-light">QR Code</a>
+                     <a href="https://www.google.com/maps/search/Hotels+{{ hotel.place.pays }}" class="btn btn-danger btn rounded text-light  " target="_blank">Map</a>
+
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_hotel_new') }}" class="btn btn-outline-secondary">Ajouter</a>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Message
+{% endblock %}
+
+{% block body %}
+ <section class="section">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Message</h5>
+				
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id_message</th>
+				<td>{{ message.getId_message }}</td>
+			</tr>
+			<tr>
+				<th>Contenu</th>
+				<td>{{ message.getContenu }}</td>
+			</tr>
+			<tr>
+				<th>Note</th>
+				<td>{{ message.getNote }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	<a href="{{ path('app_message_edit', {'id_message': message.id_message}) }}" class="btn btn-outline-success rounded">Modifier</a>
+
+	<a href="{{ path('app_message_index') }}" class="btn btn-outline-secondary rounded">back to list</a>
+
+	{{ include('message/_delete_form.html.twig') }}
+{% endblock %}

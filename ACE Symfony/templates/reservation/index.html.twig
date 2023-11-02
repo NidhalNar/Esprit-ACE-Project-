@@ -1,0 +1,128 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Reservation
+{% endblock %}
+
+{% block body %}
+	<section class="section">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Reservation</h5>
+						{% set reservations_qte_res = 0 %}
+						{% set reservations_qte_res2 = 0 %}
+
+
+						{% for reservation in reser %}
+							{% if reservation.qte == 1  %}
+								{% set reservations_qte_res = reservations_qte_res + 1 %}
+							{% elseif reservation.qte >= 2  %}
+								{% set reservations_qte_res2 = reservations_qte_res2 + 1 %}
+
+							{% endif %}
+						{% endfor %}
+
+						<div class="row">
+							<div class="col-md-4">
+								<div class="card bg-primary text-dark bg-opacity-25">
+									<div class="card-body">
+										<h5 class="card-title card-title-dash" style="color: #343A40; font-weight: bold;">reservations with  1 place</h5>
+										<p class="card-text" style="font-size: 36px; font-weight: bold; color: #007BFF;">{{ reservations_qte_res }}</p>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="card bg-primary text-dark bg-opacity-25">
+									<div class="card-body">
+										<h5 class="card-title card-title-dash" style="color: #343A40; font-weight: bold;">reservations >1 places
+										</h5>
+										<p class="card-text" style="font-size: 36px; font-weight: bold; color: #007BFF;">{{ reservations_qte_res2 }}</p>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>IdUser</th>
+									<th>Event</th>
+									<th>Qte</th>
+									<th>actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for reservation in reservations %}
+									<tr>
+										<td>{{ reservation.id }}</td>
+										<td>{{ reservation.idUser }}</td>
+										<td>{{ reservation.event.id }}</td>
+										<td>{{ reservation.qte }}</td>
+										<td>
+											<a href="{{ path('reservation_show', {'id': reservation.id}) }}" class="btn btn-primary btn rounded text-light" >Afficher</a>
+											<a href="{{ path('reservation_edit', {'id': reservation.id}) }}" class="btn btn-success btn rounded text-light" >Modifier</a>
+										</td>
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="4">no records found</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<nav class="pagination-nav">
+							{{ knp_pagination_render(pagination) }}
+						</nav>
+
+						<style>
+							.pagination-nav {
+								display: flex;
+								justify-content: left;
+								margin: 20px 0;
+							}
+
+							.pagination a,
+							.pagination span {
+								border: 1px solid #ccc;
+								padding: 5px 10px;
+								margin: 0 5px;
+								color: #333;
+								text-decoration: none;
+								text-align: center;
+							}
+
+							.pagination .active {
+								background-color: #007bff;
+								color: aqua;
+							}
+
+							.pagination a:hover:not(.active),
+							.pagination span:hover:not(.active) {
+								background-color: #ddd;
+								text-decoration: none;
+							}
+						</style>
+
+
+						<a href="{{ path('reservation_new') }}" class="btn btn-outline-secondary" >Create new</a>
+						<div>
+							<th>Sort</th>
+						</div>
+						<th></th>
+						<div>
+							<a href="{{ path('reservation_index', {'tri': 'id'}) }}">by ID</a>
+							<a href="{{ path('reservation_index', {'tri': 'idUser'}) }}">
+								User ID</a>
+							<a href="{{ path('reservation_index', {'tri': 'qte'}) }}">
+								Quantity</a>
+
+
+						</div>
+
+
+					</a>
+				{% endblock %}

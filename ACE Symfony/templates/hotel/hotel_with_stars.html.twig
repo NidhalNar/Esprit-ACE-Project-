@@ -1,0 +1,41 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Hotel {% endblock %}
+
+{% block body %}
+
+    <h1>Hotels  </h1>
+        <a href="{{ path('app_hotel_export_excel') }}" class="btn btn-secondary btn-rounded text-light" style=" position: absolute; top: 10px; right: 10px; margin-right: 10px; margin-top: 10px;">Export to Excel</a>
+
+
+
+    <table id="example" class="table  table-hover display nowrap  border " style="width:100%">
+        <thead>
+          <tr class="table-primary" height="50px"> 
+                <th class="text-center">Id</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Stars</th>
+                <th class="text-center">Type</th>
+                <th class="text-center">Place</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+        {% for hotel in hotels %}
+            <tr>
+                <td>{{ hotel.id }}</td>
+                <td>{{ hotel.nom }}</td>
+                <td>{{ hotel.etoile }} Stars</td>
+                <td>{{ hotel.type }}</td>
+ <td>{{ hotel.place is not null ? hotel.place.pays : 'N/A' }}</td>               
+  
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_hotel_new') }}" class="btn btn-outline-secondary">Create new</a>
+{% endblock %}

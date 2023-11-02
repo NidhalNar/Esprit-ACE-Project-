@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>Ace
+			{% block title %}
+				Home
+			{% endblock  %}
+		
+
+		</title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta content="Free HTML Templates" name="keywords">
+		<meta
+		content="Free HTML Templates" name="description">
+
+		<!-- Favicon -->
+		<link
+		href="{{ asset('img/favicon.ico') }}" rel="icon">
+
+
+		<!-- Google Web Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+		href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+		<!-- Icon Font Stylesheet -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+		{% block lib %}
+			<!-- Libraries Stylesheet -->
+			<link
+			href="{{ asset('front-office/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+			<!-- Animate.css Stylesheet -->
+			<link href="{{ asset('front-office/lib/animate/animate.min.css') }}" rel="stylesheet">
+		{% endblock %}
+		<!-- Customized Bootstrap Stylesheet -->
+		{% block css %}
+			<link
+			href="{{ asset('front-office/css/bootstrap.min.css') }}" rel="stylesheet">
+
+			<!-- Template Stylesheet -->
+			<link href="{{ asset('front-office/css/style.css') }}" rel="stylesheet">
+		{% endblock %}
+	</head>
+	<body>
+	
+		<!-- Spinner Start -->
+		<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+			<div class="spinner"></div>
+		</div>
+		<!-- Spinner End -->
+		<!-- Navbar & Carousel Start -->
+		<div class="container-fluid position-relative p-0">
+			<nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+				<a href="index.html" class="navbar-brand p-0">
+					<h1 class="m-0">
+					<img src="{{ asset('front-office/img/logo.png') }}" width="7%">ACE</h1>
+
+				</a>
+				<div class="collapse navbar-collapse" id="navbarCollapse">
+					<div class="navbar-nav ms-auto py-0">
+						<a href="{{ path('app_login') }}" class="btn btn-primary py-2 px-4 ms-3">Connexion</a>
+						<a href="{{ path('app_register') }}" class="btn btn-primary py-2 px-4 ms-3">S'inscrire</a>
+					</div>
+				</div>
+			</nav>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="w-100" src="{{ asset('front-office/img/img.jpg') }}" alt="Image">
+					<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+						<div class="p-3" style="max-width: 900px;">
+							<h2 class="text-white text-uppercase mb-3 animated slideInDown">Ace</h2>
+							<h1 class="display-1 text-white mb-md-4 animated zoomIn">Art, Culture & Entertainment</h1>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Navbar & Carousel End -->
+
+		<!-- About Start -->
+				<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+					<div class="container py-5">
+						<div class="row g-5">
+							<div class="col-lg-7">
+								<div class="section-title position-relative pb-3 mb-5">
+									<h5 class="fw-bold text-primary text-uppercase">À propos nous</h5>
+									<h1 class="mb-0">Le meilleur site pour réserver un événement</h1>
+								</div>
+								<p class="mb-4">Bienvenue sur notre site ACE ! 
+								Nous sommes heureux de vous offrir une plateforme en ligne pratique et conviviale
+								 pour réserver des événements qui se déroulent dans des endroits spécifiques. 
+								 Que vous cherchiez tout les types d'événements, notre site web est là pour faciliter 
+								 le processus de réservation. Notre objectif est de vous offrir une expérience de réservation 
+								 sans stress et de vous aider à trouver le lieu idéal pour votre événement. Nous espérons que vous 
+								 trouverez notre site utile et nous sommes impatients de vous aider à planifier votre prochain événement
+								  réussi !</p>
+								<div class="row g-0 mb-3">
+									<div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
+										<h5 class="mb-3">
+											<i class="fa fa-check text-primary me-3"></i>le seul site en tunisie</h5>
+										<h5 class="mb-3">
+											<i class="fa fa-check text-primary me-3"></i>Travail professionnel</h5>
+									</div>
+									<div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
+										<h5 class="mb-3">
+											<i class="fa fa-check text-primary me-3"></i>Disponible 24/7 </h5>
+										<h5 class="mb-3">
+											<i class="fa fa-check text-primary me-3"></i>Prix raisonnable</h5>
+									</div>
+								</div>
+								<div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
+									<div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+										<i class="fa fa-phone-alt text-white"></i>
+									</div>
+									<div class="ps-4">
+										<h5 class="mb-2">Appel nous sur</h5>
+										<h4 class="text-primary mb-0">+216 72 474 110</h4>
+									</div>
+									</div>
+							</div>
+								
+							<div class="col-lg-5" style="min-height: 500px;">
+								<div class="position-relative h-100">
+									<img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="{{ asset('front-office/img/about.jpg') }}" style="object-fit: cover;">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- About End -->
+
+				
+				<!-- Features Start -->
+				<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+					<div class="container py-5">
+						<div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+							<h5 class="fw-bold text-primary text-uppercase">Pourquoi nous</h5>
+							<h1 class="mb-0">Nous sommes là pour vous faciliter votre vie</h1>
+						</div>
+						<div class="row g-5">
+							<div class="col-lg-4">
+								<div class="row g-5">
+									<div class="col-12 wow zoomIn" data-wow-delay="0.2s">
+										<div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+											<i class="fa fa-cubes text-white"></i>
+										</div>
+										<h4> Le Meilleur en tunisie</h4>
+									</div>
+									<div class="col-12 wow zoomIn" data-wow-delay="0.6s">
+										<div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+											<i class="fa fa-award text-white"></i>
+										</div>
+										<h4>Site web Simple</h4>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
+								<div class="position-relative h-100">
+									<img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.1s" src="{{ asset('front-office/img/feature.jpg') }}" style="object-fit: cover;">
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="row g-5">
+									<div class="col-12 wow zoomIn" data-wow-delay="0.4s">
+										<div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+											<i class="fa fa-users-cog text-white"></i>
+										</div>
+										<h4>Contient tout les Evenement</h4>
+									</div>
+									<div class="col-12 wow zoomIn" data-wow-delay="0.8s">
+										<div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+											<i class="fa fa-phone-alt text-white"></i>
+										</div>
+										<h4>Disponible partout</h4>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Features Start -->
+
+
+		<!-- Full Screen Search Start -->
+		<div class="modal fade" id="searchModal" tabindex="-1">
+			<div class="modal-dialog modal-fullscreen">
+				<div class="modal-content" style="background: rgba(9, 30, 62, .7);">
+					<div class="modal-header border-0">
+						<button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body d-flex align-items-center justify-content-center">
+						<div class="input-group" style="max-width: 600px;">
+							<input type="text" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
+							<button class="btn btn-primary px-4">
+								<i class="bi bi-search"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Full Screen Search End -->
+
+
+		<!-- Footer Start -->
+		<div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
+			<div class="container">
+				<div class="row gx-5">
+					<div class="col-lg-4 col-md-6 footer-about">
+						<div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
+							<a href="index.html" class="navbar-brand">
+								<h1 class="m-0 text-white">
+									<i class="fa fa-user-tie me-2"></i>ACE</h1>
+							</a>
+							<p class="mt-3 mb-4">Ace est le guide de sorties en Tunisie qui réunit dans une seule application les meilleurs endroits à visiter en Tunisie, les événements culturels, les soirées, les sorties cinéma, les excursions et randonnées, les voyages ou encore les bons plans culinaires.</p>
+						</div>
+					</div>
+					<div class="col-lg-8 col-md-6">
+						<div class="row gx-5">
+							<div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
+								<div class="section-title section-title-sm position-relative pb-3 mb-4">
+									<h3 class="text-light mb-0">Contactez-nous</h3>
+								</div>
+								<div class="d-flex mb-2">
+									<i class="bi bi-geo-alt text-primary me-2"></i>
+									<p class="mb-0">TUNISIE</p>
+								</div>
+								<div class="d-flex mb-2">
+									<i class="bi bi-envelope-open text-primary me-2"></i>
+									<p class="mb-0">ace@gmail.com</p>
+								</div>
+								<div class="d-flex mb-2">
+									<i class="bi bi-telephone text-primary me-2"></i>
+									<p class="mb-0">+216 72 474 110</p>
+								</div>
+								<div class="d-flex mt-4">
+									<a class="btn btn-primary btn-square me-2" href="#">
+										<i class="fab fa-twitter fw-normal"></i>
+									</a>
+									<a class="btn btn-primary btn-square me-2" href="#">
+										<i class="fab fa-facebook-f fw-normal"></i>
+									</a>
+									<a class="btn btn-primary btn-square me-2" href="#">
+										<i class="fab fa-linkedin-in fw-normal"></i>
+									</a>
+									<a class="btn btn-primary btn-square" href="#">
+										<i class="fab fa-instagram fw-normal"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid text-white" style="background: #061429;">
+			<div class="container text-center">
+				<div class="row justify-content-end">
+					<div class="col-lg-8 col-md-6">
+						<div class="d-flex align-items-center justify-content-center" style="height: 75px;">
+							<p class="mb-0">&copy;
+								<a class="text-white border-bottom" href="#">ACE
+								</a>. All Rights Reserved 2023.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Footer End -->
+
+		<!-- Facts Start -->
+		<!-- JavaScript Libraries -->
+			{% block js %}<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+			<script src="{{ asset('front-office/lib/wow/wow.min.js') }}"></script>
+			<script src="{{ asset('front-office/lib/easing/easing.min.js') }}"></script>
+			<script src="{{ asset('front-office/lib/waypoints/waypoints.min.js') }}"></script>
+			<script src="{{ asset('front-office/lib/counterup/counterup.min.js') }}"></script>
+			<script src="{{ asset('front-office/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+
+			<!-- Template Javascript -->
+			<script src="{{ asset('front-office/js/main.js') }}"></script>
+		{% endblock %}
+	</body>
+
+</html>

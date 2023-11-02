@@ -1,0 +1,10 @@
+{# templates/post/comments.html.twig #}
+
+<h1>{{ post.sujet }}</h1>
+
+<h2>Comments:</h2>
+<ul>
+	{% for comment in comments %}
+		<li>{{ comment.contenu }}</li>
+	{% endfor %}
+</ul>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/gui/ajoute_des.fxml</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/Service/ServiceHotel.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/gui/Gere_hotController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/controllers/test.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/gui/gmap.fxml</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/gui/Gere_desController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/Entite/hotel.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/ace/Ace.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/Service/IServiceHotel.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/Service/ServiceDestination.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/gui/Modifier_desController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/gui/Ajoute_hotController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/gui/Modifier_hotController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/gui/GmapController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/gui/Hot_desController.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/Service/IServiceDes.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/gui/hot_des.fxml</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/Utils/DataSource.java</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/gui/Modifier_des.fxml</file>
+            <file>file:/C:/Users/Lenovo/Documents/NetBeansProjects/erp/ace/src/API/openTripMapApi.java</file>
+        </group>
+    </open-files>
+</project-private>

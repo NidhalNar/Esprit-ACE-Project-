@@ -1,0 +1,71 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}utilisateurs{% endblock %}
+
+{% block body %}
+	<section class="section">
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Les utilisateurs non vérifiés</h5>
+						<!-- Table with stripped rows -->
+						<table
+							class="table">
+							<!-- Table with stripped rows -->
+							<div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
+								<div class="datatable-top">
+									<div class="datatable-search">
+										<input class="datatable-input" placeholder="Search..." type="search" title="Search within table">
+									</div>
+								</div>
+
+							</div>
+							<thead>
+								<tr>
+									<th scope="co">Id</th>
+									<th scope="co">Nom</th>
+									<th scope="co">Adresse e-mail</th>
+									<th scope="co">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for user in users %}
+									<tr>
+										<td>{{ user.id }}</td>
+										<td>{{ user.nom }}</td>
+										<td>{{ user.email }}</td>
+
+										<td>
+											<a class="btn btn-info rounded text-light" href="{{ path('app_user_show', {'id': user.id}) }}">Afficher</a>
+											<a class="btn btn-circle btn-success" href="{{ path('app_user_activer', {'id': user.id}) }}">Activer</a>
+
+										</td>
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="10">Aucun utilisateur n'a été trouvé</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+						<div
+							class="card-footer bg-transparent p-0">
+							<!-- Pagination START -->
+							<div
+								class="d-sm-flex justify-content-sm-between align-items-sm-center">
+								<!-- Content -->
+								<p class="mb-0 text-center text-sm-start"></p>
+								<!-- Pagination -->
+								<nav class="d-flex justify-content-center mb-0" aria-label="navigation" style="font-size: 1.2rem; text-align: center;">
+									{{ knp_pagination_render(users) }}
+								</nav>
+
+							</div>
+						</div>
+					</div>
+				</div>				</div>
+
+			</section>
+		{% endblock %}

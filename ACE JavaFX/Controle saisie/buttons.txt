@@ -1,0 +1,16 @@
+delete_form.html.twig:  <button  class="btn btn-danger">Delete</button>
+
+_form.html.twig :   <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+
+edit.html.twig : <a href="{{ path('app_destination_index') }}" class="btn btn-outline-secondary rounded">back to list</a>
+
+index.html.twig : <td>
+                   	 <a href="{{ path('app_destination_show', {'id': destination.id}) }}" class="btn btn-primary btn rounded text-light">show</a>
+                  	  <a href="{{ path('app_destination_edit', {'id': destination.id}) }}"class="btn btn-success btn rounded text-light">edit</a>
+               	</td>
+new.html.twig :  <a href="{{ path('app_destination_index') }}"class="btn btn-outline-secondary rounded" >back to list</a>
+
+show.html.twig :  
+		<a href="{{ path('app_destination_edit', {'id': destination.id}) }}" class="btn btn-outline-success rounded">edit</a>
+
+   		 <a href="{{ path('app_destination_index') }}" class="btn btn-outline-secondary rounded">back to list</a>

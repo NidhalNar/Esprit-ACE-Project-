@@ -1,0 +1,63 @@
+{% extends 'base-back.html.twig' %}
+{% block title %}Destination {% endblock %}
+
+
+
+{% block body %}
+
+ 
+   <section class="section">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Déstinations</h5>
+					<table
+<!-- Assuming this code is inside the body block of your Twig template -->
+
+<!-- Card container with custom background color, opacity, and text color -->
+<div class="card bg-primary text-dark bg-opacity-25">
+    <div class="card-body">
+        <h5 class="card-title card-title-dash" style="color: #343A40; font-weight: bold;">Total Cities</h5>
+        <p class="card-text" style="font-size: 36px; font-weight: bold; color: #007BFF;">{{ destinations|length }}</p> <!-- destinations is the collection of countries -->
+        <a href="{{ path('app_destination_export_excel') }}" class="btn btn-secondary btn-rounded text-light" style=" position: absolute; top: 10px; right: 10px; margin-right: 10px; margin-top: 10px;">Export to Excel</a>
+    </div>
+</div>
+
+
+
+
+    <table id="example" class="table  table-hover display nowrap  border " style="width:100%">
+        <thead >
+            <tr class="table-primary"  height="50px"> 
+                <th class="text-center">Id</th>
+                <th class="text-center">Country</th>
+                <th class="text-center">City</th>
+              
+                <th class="text-center" >Actions</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+        {% for destination in destinations %}
+            <tr>
+                <td>{{ destination.id }}</td>
+                <td>{{ destination.pays }}</td>
+                <td>{{ destination.ville }}</td>
+               
+                <td>
+                    <a href="{{ path('app_destination_show', {'id': destination.id}) }}" class="btn btn-primary btn rounded text-light">Afficher</a>
+                    <a href="{{ path('app_destination_edit', {'id': destination.id}) }}"class="btn btn-success btn rounded text-light">Modifier</a>
+            <a href="{{ path('generate_qr_code', {'id': destination.id}) }}" class="btn btn-info btn rounded text-light">QR Code</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_destination_new') }}" class="btn btn-outline-secondary">Create new</a>
+{% endblock %}

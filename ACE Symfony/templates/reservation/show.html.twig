@@ -1,0 +1,34 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+<div class="container">
+		<div class="card">
+			<div class="card-header">
+				<h1 class="text-center">Reservation</h1>
+			</div>
+			<div class="card-body">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reservation.id }}</td>
+            </tr>
+            <tr>
+                <th>IdUser</th>
+                <td>{{ reservation.idUser }}</td>
+            </tr>
+            <tr>
+                <th>Qte</th>
+                <td>{{ reservation.qte }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('reservation_index') }}"class="btn btn-primary">retour à la page</a>
+
+    <a href="{{ path('reservation_edit', {'id': reservation.id}) }}" class="btn btn-success">Modifier</a>
+
+    {{ include('reservation/_delete_form.html.twig') }}
+{% endblock %}

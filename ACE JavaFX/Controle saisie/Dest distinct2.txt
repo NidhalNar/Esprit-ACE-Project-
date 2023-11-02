@@ -1,0 +1,9 @@
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+#[ORM\Entity(repositoryClass: DestinationRepository::class)]
+#[UniqueEntity(fields: ['pays', 'ville'], message: 'The combination of "pays" and "ville" already exists.')]
+class Destination
+{
+    // ... your existing code ...
+}

@@ -1,0 +1,19 @@
+// src/Validator/Constraints/UniqueDestination.php
+
+namespace App\Validator\Constraints;
+
+use Symfony\Component\Validator\Constraint;
+
+/**
+ * @Annotation
+ */
+#[\Attribute]
+class UniqueDestination extends Constraint
+{
+    public string $message = 'The destination ({{ pays }}/{{ ville }}) already exists.';
+
+    public function getTargets(): string
+    {
+        return self::CLASS_CONSTRAINT;
+    }
+}

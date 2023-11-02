@@ -1,0 +1,110 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Post
+{% endblock %}
+{% block home %}
+		<div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img class="w-100" src="{{ asset('front-office/img/gestion.jpg') }}" alt="Image">
+						<div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+							<div class="p-3" style="max-width: 900px;">
+								<br><br><br>
+								<h5 class="text-white text-uppercase mb-3 animated slideInDown">Ace</h5>
+								<h1 class="display-1 text-white mb-md-4 animated zoomIn">Art, Culture & Entertainment</h1>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+{% endblock %}
+{% block body %}
+	<script src="https://kit.fontawesome.com/baf8e62e68.js" crossorigin="anonymous"></script>
+
+
+	<h1>Post</h1>
+	{% set formatted_average = averageNote|number_format(2, '.', ',') %}
+	<h4>la note globale de ce post est :
+		{{ formatted_average }}
+	</h4>
+
+
+	{% set rounded_rating = formatted_average|round %}
+
+	{% if rounded_rating > 0 %}
+		{% for i in 1..rounded_rating %}
+			<i class="fa fa-star"></i>
+		{% endfor %}
+	{% endif %}
+
+	<br><br><br>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>
+					<h3>Sujet</h3>
+				</th>
+				<td>
+					<h3>{{ post.getSujet }}</h3>
+				</td>
+
+			</tr>
+		</tbody>
+	</table>
+
+	<hr>
+
+	<h2>Commentaires</h2>
+	<!-- Add this line to display a heading for the messages -->
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					<h5>Id commentaire</h5>
+				</th>
+				<th>
+					<h5>Contenu</h5>
+				</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for key,message in messages %}
+				<tr>
+					<td>{{ key+1 }}</td>
+					<td>{{ message.getContenu }}</td>
+					<td>{{ message.getLikes }}</td>
+					<td>
+						<form action="{{ path('app_message_like', {'id': message.getId_message()}) }}" method="POST">
+							<button type="submit" class="btn btn-sm btn-outline-success">
+								<i class="fas fa-thumbs-up"></i>
+							</button>
+						</form>
+					</td>
+					<td>
+						<form action="{{ path('app_message_dislike', {'id': message.getId_message()}) }}" method="POST">
+							<button type="submit" class="btn btn-sm btn-outline-danger">
+								<i class="fas fa-thumbs-down"></i>
+							</button>
+						</form>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<hr>
+
+	<a href="{{ path('app_post_edit', {'id_post': post.id_post}) }}" class="btn btn-outline-success rounded">Modifier</a>
+
+	<a href="{{ path('app_post_index') }}" class="btn btn-outline-secondary rounded">Retour à la liste</a>
+
+	<a href="{{ path('app_message_new') }}" class="btn btn-secondary btn-outline-primary rounded">Ajouter un commentaire</a>
+
+	{{ include('post/_delete_form.html.twig') }}
+{% endblock %}
